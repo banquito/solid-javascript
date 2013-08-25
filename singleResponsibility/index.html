@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Single Responsibility</title>
+  <script>
+
+  window.onload = function() {
+    var dates = document.getElementsByTagName("span");
+    for ( var i = 0; i < dates.length; i++ ) {
+      var date = new Date(dates[i].innerText);
+      var now = new Date();
+      var diffInMiliSeconds = now.getTime() - date.getTime();
+      var diffInSeconds = Math.ceil(diffInMiliSeconds / 1000);
+      var diffInMinutes = Math.ceil(diffInSeconds / 60);
+      var diffInHours = Math.ceil(diffInMinutes / 60);
+      var diffInDays = Math.ceil(diffInHours / 24);
+      var diffInWeeks = Math.ceil(diffInDays / 7);
+      var diffInMonths = Math.ceil(diffInDays / 30);
+      var diffInYears = Math.ceil(diffInDays / 365);
+      var ago = diffInYears + "a";
+
+      if (diffInMinutes == 1) {
+        ago = "1min";
+      } else if (diffInMinutes < 60) {
+        ago = diffInMinutes + "min";
+      } else if (diffInHours == 1) {
+        ago = "1h";
+      } else if (diffInHours < 24) {
+        ago = diffInHours +"h";
+      } else if (diffInDays == 1) {
+        ago = "ayer";
+      } else if (diffInDays <= 7) {
+        ago = diffInDays +"d";
+      } else if (diffInDays <= 30) {
+        ago = diffInWeeks + "sem";
+      } else if (diffInDays <= 365) {
+        ago = diffInMonths + "m";
+      }
+      dates[i].innerText = "hace " + ago;
+    }
+  };
+  </script>
+</head>
+<body>
+ 
+<ul>
+  <li>
+    <a href="http://freshbrewedcode.com/derekgreer/2011/12/08/solid-javascript-single-responsibility-principle/">
+      SOLID JavaScript: The Single Responsibility Principle
+    </a>
+    <span>2013/08/25</span>
+  </li>
+  <li>
+    <a href="http://freshbrewedcode.com/derekgreer/2011/12/19/solid-javascript-the-openclosed-principle/">
+      SOLID JavaScript: The Open/Closed Principle
+    </a>
+    <span>2013/08/24</span>
+  </li>
+  <li>
+    <a href="http://freshbrewedcode.com/derekgreer/2011/12/31/solid-javascript-the-liskov-substitution-principle/">
+      SOLID JavaScript: The Liskov Substitution Principle
+    </a>
+    <span>2013/08/23</span>
+  </li>
+  <li>
+    <a href="http://freshbrewedcode.com/derekgreer/2012/01/08/solid-javascript-the-interface-segregation-principle/">
+      SOLID JavaScript: The Interface Segregation Principle
+    </a>
+    <span>2013/08/22</span>
+  </li>
+  <li>
+    <a href="http://freshbrewedcode.com/derekgreer/2012/01/22/solid-javascript-the-dependency-inversion-principle/">
+      SOLID JavaScript: The Dependency Inversion Principle
+    </a>
+    <span>2013/08/21</span>
+  </li>
+</ul>
+ 
+</body>
+</html>
